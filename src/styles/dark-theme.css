@@ -1,0 +1,18 @@
+[role='theme-dark'] {
+  background: #333;
+  color: white;
+}
+
+[role='theme-dark'] ._themeBtn:hover {
+  background: rgb(65, 65, 65);
+}
+
+[role='theme-dark'] ._input_submit {
+  color: rgb(109, 109, 109);
+}
+
+[role='theme-dark'] ._input {
+  border: 1px solid rgb(109, 109, 109);
+  background: rgb(68, 68, 68);
+  color: white;
+}
