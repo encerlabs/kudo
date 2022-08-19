@@ -18,3 +18,12 @@
 [role='theme-light'] ._todo_container {
   background: rgb(230, 230, 230);
 }
+
+[role='theme-light'] ._todo_text_done {
+  color: rgb(199, 199, 199);
+}
+
+[role='theme-light'] ._todo_delete_btn {
+  color: rgb(43, 43, 43);
+  background: rgb(199, 199, 199);
+}

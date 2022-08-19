@@ -102,8 +102,18 @@ a {
 
 ._todo_text {
   margin-left: .5rem;
+  cursor: pointer;
+}
+
+._todo_text_done {
+  text-decoration: line-through;
 }
 
 ._todo_delete_btn {
+  cursor: pointer;
   display: flex;
+  padding: .2rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: .2rem;
 }

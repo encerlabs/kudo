@@ -20,3 +20,11 @@
 [role='theme-dark'] ._todo_container {
   background: rgb(68, 68, 68);
 }
+
+[role='theme-dark'] ._todo_text_done {
+  color: rgb(109, 109, 109);
+}
+
+[role='theme-dark'] ._todo_delete_btn {
+  background: rgb(109, 109, 109);
+}
