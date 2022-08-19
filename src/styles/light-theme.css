@@ -14,3 +14,7 @@
   border: 1px solid rgb(199, 199, 199);
   background: rgb(230, 230, 230);
 }
+
+[role='theme-light'] ._todo_container {
+  background: rgb(230, 230, 230);
+}

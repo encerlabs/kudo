@@ -85,3 +85,25 @@ a {
   margin: 8px 8px 0 0;
   position: absolute;
 }
+
+._todo_container {
+  padding: 1rem;
+  margin: .5rem 0;
+  border-radius: .5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+._todo_container div {
+  display: flex;
+  align-items: center;
+}
+
+._todo_text {
+  margin-left: .5rem;
+}
+
+._todo_delete_btn {
+  display: flex;
+}

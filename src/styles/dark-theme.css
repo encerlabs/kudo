@@ -16,3 +16,7 @@
   background: rgb(68, 68, 68);
   color: white;
 }
+
+[role='theme-dark'] ._todo_container {
+  background: rgb(68, 68, 68);
+}
