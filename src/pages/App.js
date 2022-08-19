@@ -3,6 +3,7 @@ import { TodoContext, ThemeContext } from '../context';
 import '../styles/App.css';
 import { ThemeButton, Input } from '../components';
 import { BiTrash } from 'react-icons/bi';
+import classNames from 'classnames';
 
 export default function App(props) {
   const [mode, setMode] = useState('dark');
@@ -64,10 +65,9 @@ export default function App(props) {
                 {list.map((todo, i) => (
                   <div className="_todo_container" key={i}>
                     <div>
-                      <input type="checkbox" onClick={() => statusToggleHandler(todo.id)} />
-                      <p className="_todo_text">{todo.text}</p>
+                      <p onClick={() => statusToggleHandler(todo.id)} className={classNames('_todo_text', {'_todo_text_done': todo.done})}>{todo.text}</p>
                     </div>
-                    <span style={{ background: '#666', display: 'flex', padding: '.2rem', justifyContent: 'center', alignItems: 'center', borderRadius: '.2rem' }} onClick={() => todoDeleteHandler(todo.id)}>
+                    <span className="_todo_delete_btn" onClick={() => todoDeleteHandler(todo.id)}>
                       <BiTrash />
                     </span>
                   </div>
