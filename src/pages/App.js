@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { TodoContext, ThemeContext } from '../context';
 import '../styles/App.css';
 import { ThemeButton, Input } from '../components';
+import { BiTrash } from 'react-icons/bi';
 
 export default function App(props) {
   const [mode, setMode] = useState('dark');
@@ -13,10 +14,31 @@ export default function App(props) {
 
   const enterPressedHandler = (e) => {
     if (e.charCode === 13 && inputText)
-      setList((prev) => {
-        return [...prev, inputText];
-      });
+      setList((prev) => [
+        ...prev,
+        {
+          id: !prev.at(-1) ? 0 : prev.at(-1).id + 1,
+          text: inputText,
+          done: false,
+        },
+      ]);
   };
+
+  const todoDeleteHandler = (todoId) => {
+    setList((prev) => {
+      const targetIndexPosition = prev.findIndex((todo) => todo.id === todoId);
+      prev.splice(targetIndexPosition, 1);
+      return [...prev];
+    });
+  };
+
+  const statusToggleHandler = (todoId) => {
+    setList(prev => {
+      const targetIndexPosition = prev.findIndex((todo) => todo.id === todoId);
+      prev[targetIndexPosition]['done'] = !prev[targetIndexPosition]['done']
+      return [...prev];
+    });
+  }
 
   useEffect(() => {
     setInputText('');
@@ -36,11 +58,19 @@ export default function App(props) {
             <main>
               <div aria-label="Todo Input" className="_input_section">
                 <small>What you want to do?</small>
-                <Input onChange={inputChangeHandler} onKeyPress={enterPressedHandler} value={inputText} />
+                <Input type="text" onChange={inputChangeHandler} onKeyPress={enterPressedHandler} value={inputText} />
               </div>
               <div>
-                {list.map((r, i) => (
-                  <div key={i}>{r}</div>
+                {list.map((todo, i) => (
+                  <div className="_todo_container" key={i}>
+                    <div>
+                      <input type="checkbox" onClick={() => statusToggleHandler(todo.id)} />
+                      <p className="_todo_text">{todo.text}</p>
+                    </div>
+                    <span style={{ background: '#666', display: 'flex', padding: '.2rem', justifyContent: 'center', alignItems: 'center', borderRadius: '.2rem' }} onClick={() => todoDeleteHandler(todo.id)}>
+                      <BiTrash />
+                    </span>
+                  </div>
                 ))}
               </div>
             </main>
