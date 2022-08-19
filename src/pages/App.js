@@ -6,7 +6,11 @@ import { BiTrash } from 'react-icons/bi';
 import classNames from 'classnames';
 
 export default function App(props) {
-  const [mode, setMode] = useState('dark');
+  const [mode, setMode] = useState(() => {
+    if(!localStorage['theme'] || (localStorage['theme'] !== 'dark' && localStorage['theme'] !== 'light')) localStorage.setItem('theme', 'dark');
+    return localStorage['theme'];
+  });
+
   const [list, setList] = useState([]);
   const [inputText, setInputText] = useState('');
 
@@ -44,6 +48,10 @@ export default function App(props) {
   useEffect(() => {
     setInputText('');
   }, [list]);
+
+  useEffect(() => {
+    localStorage.setItem('theme', mode);
+  }, [mode])
 
   return (
     <ThemeContext.Provider value={{ mode, setMode }}>
